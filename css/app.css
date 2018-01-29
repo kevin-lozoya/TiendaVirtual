@@ -1,0 +1,36 @@
+.logo {
+  height: 40px;
+}
+.busqueda-movil {
+  border-bottom: 1px solid #dbdbdb;
+}
+
+.titulo {
+  border-bottom: 2px solid #be9deb;
+  margin-top: 20px;
+}
+.bg-tienda {
+  background-color: #583a82;
+}
+.tarjeta-producto:hover {
+  border: 1px solid #000000;
+}
+.btn-tienda {
+  background-color: #7a55ad;
+  color: #ffffff;
+}
+.btn-tienda:hover {
+  color: #ffffff;
+  background-color: #583a82;
+}
+.btn-outline-secondary {
+  color: #000000;
+}
+.btn-outline-secondary:hover {
+  background-color: #e6e6e6;
+  color: #000000;
+}
+.form-precio-producto {
+  font-weight: bold;
+  font-size: 1.5rem;
+}
