@@ -29,12 +29,21 @@ class Carrito {
     return $existe;
   }
 
-  public function anyadirProducto($id, $cantidad) {
-    if (!($this->existeProducto($id))) {
-      $producto = $this->producto->buscarPorId($id);
-      $producto['cantidad'] = $cantidad;
-      $_SESSION['carrito'][] = $producto;
+  public function actualizarCantidadProducto($id, $cantidad) {
+    if (isset($_SESSION['carrito'])) {
+      foreach ($_SESSION['carrito'] as $key => $value) {
+        if ($value['id'] === $id) {
+          $_SESSION['carrito'][$key]['cantidad'] = $cantidad;
+          break;
+        }
+      }
     }
+  }
+
+  public function anyadirProducto($id, $cantidad) {
+    $producto = $this->producto->buscarPorId($id);
+    $producto['cantidad'] = $cantidad;
+    $_SESSION['carrito'][] = $producto;
     
   }
 

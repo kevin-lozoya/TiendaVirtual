@@ -13,7 +13,7 @@
         </a>
       </div>
       <div class="text-center">
-        <a href="/producto.php?id={}$producto.id">
+        <a href="/producto.php?id={$producto.id}">
           {$producto.nombre}
         </a>
       </div>

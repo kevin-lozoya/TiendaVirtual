@@ -7,7 +7,7 @@
   <div class="row">
     <div class="col-lg-8">
       <div class="table-responsive">
-        <table class="table">
+        <table class="table table-hover">
           <thead>
             <tr>
               <th scope="col">Producto</th>
@@ -18,39 +18,23 @@
             </tr>
           </thead>
           <tbody>
+          {foreach $productos as $producto}
             <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>200€</td>
-              <td>2</td>
-              <td>400€</td>
+              <th scope="row"><a href="/producto.php?id={$producto.id}">{$producto.nombre}</a></th>
+              <td>{$producto.precio}€</td>
+              <td>{$producto.cantidad}</td>
+              <td>{$producto.precio * $producto.cantidad}€</td>
               <td>
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <form action="borrarproductocarrito.php" method="post">
+                  <input type="hidden" name="id" value="{$producto.id}">
+                  <button type="submit" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </form>
+                
               </td>
             </tr>
-            <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>200€</td>
-              <td>2</td>
-              <td>400€</td>
-              <td>
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>200€</td>
-              <td>2</td>
-              <td>400€</td>
-              <td>
-                <button type="submit" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </td>
-            </tr>
+          {/foreach}
           </tbody>
         </table>
       </div>
@@ -58,12 +42,12 @@
     <div class="col-lg-4">
       <table class="table table-striped">
         <tbody>
-          <tr class="totals key">
+          <tr>
             <td colspan="1" class="text-left">
               <strong>Total</strong>
             </td>
             <td colspan="1" class="text-right">
-              <strong>$600.000</strong>
+              <strong>{$precioTotal}€</strong>
             </td>
           </tr>
         </tbody>

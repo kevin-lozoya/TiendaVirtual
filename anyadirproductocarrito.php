@@ -8,7 +8,12 @@ $carrito = new Carrito($conProducto);
 
 if (isset($_POST['id']) && isset($_POST['cantidad'])) {
   if (!empty($_POST['id']) && $_POST['cantidad'] > 0) {
-    $carrito->anyadirProducto($_POST['id'], $_POST['cantidad']);
+    if (!$carrito->existeProducto($_POST['id'])){
+      $carrito->anyadirProducto($_POST['id'], $_POST['cantidad']);
+    }
+    else {
+      $carrito->actualizarCantidadProducto($_POST['id'], $_POST['cantidad']);
+    }
   }
 }
 
