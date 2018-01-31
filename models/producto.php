@@ -9,7 +9,7 @@ class Producto {
   }
 
   public function buscarPorId($id) {
-    $sql = "SELECT id, nombre, precio, stock, imagen
+    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
             FROM producto
             WHERE id = $id";
     
@@ -24,7 +24,8 @@ class Producto {
         'nombre' => utf8_encode($fila[1]),
         'precio' => $fila[2],
         'stock' => $fila[3],
-        'imagen' => $fila[4]
+        'imagen' => $fila[4],
+        'idCategoria' => $fila[5]
       );
     }
 
@@ -32,7 +33,7 @@ class Producto {
   }
 
   public function todos() {
-    $sql = "SELECT id, nombre, precio, stock, imagen
+    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
             FROM producto";
 
     $result = $this->conn->query($sql);
@@ -46,7 +47,8 @@ class Producto {
           'nombre' => utf8_encode($fila[1]),
           'precio' => $fila[2],
           'stock' => $fila[3],
-          'imagen' => $fila[4]
+          'imagen' => $fila[4],
+          'idCategoria' => $fila[5]
         );  
       }
     }
