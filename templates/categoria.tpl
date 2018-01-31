@@ -2,10 +2,10 @@
 
 <div id="cuerpo" class="container">
   <div class="titulo">
-    <h2>Todos los productos</h2>
+    <h2>Categoria: {$categoria.nombre}</h2>
   </div>
   <div class="row">
-  {foreach $productos as $producto }
+    {foreach $productos as $producto }
     <div class="col-xs-12 col-sm-6 col-md-4 my-2 tarjeta-producto">
       <div>
         <a href="/producto.php?id={$producto.id}">
@@ -23,7 +23,7 @@
         </h3>
       </div>
     </div>
-  {/foreach}
+    {/foreach}
   </div>
 </div>
 

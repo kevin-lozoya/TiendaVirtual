@@ -32,6 +32,31 @@ class Producto {
     return $producto;
   }
 
+  public function buscarPorCategoria($idCategoria) {
+    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
+            FROM producto
+            WHERE categoria = $idCategoria";
+    
+    $result = $this->conn->query($sql);
+
+    $productos = array();
+
+    if ($result->num_rows > 0) {
+      while ($fila = $result->fetch_array()) {
+        $productos[] = array(
+          'id' => $fila[0],
+          'nombre' => utf8_encode($fila[1]),
+          'precio' => $fila[2],
+          'stock' => $fila[3],
+          'imagen' => $fila[4],
+          'idCategoria' => $fila[5]
+        );  
+      }
+    }
+
+    return $productos;
+  }
+
   public function todos() {
     $sql = "SELECT id, nombre, precio, stock, imagen, categoria
             FROM producto";
