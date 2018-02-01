@@ -14,38 +14,38 @@
       <div class="form-row">
         <div class="form-group col-md-6">
           <label for="nombre">Nombre de Usuario</label>
-          <input type="text" class="form-control-plaintext" readonly="readonly" id="nombre" value="Kevin">
+          <input type="text" class="form-control-plaintext" readonly="readonly" id="nombre" value="{$usuario.nick}">
         </div>
         <div class="form-group col-md-6">
           <label for="email">Correo Electrónico</label>
-          <input type="email" class="form-control-plaintext" id="email" readonly="readonly" value="kevinlozoyaginer@gmail.com">
+          <input type="email" class="form-control-plaintext" id="email" readonly="readonly" value="{$usuario.email}">
         </div>  
       </div>
       <hr>
       <h3>Datos de envío</h3>
-      <form>
+      <form action="cambiardireccionusuario.php" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="nombrecompleto">Nombre completo</label>
-            <input type="text" class="form-control" id="nombrecompleto" value="Kevin Lozoya Giner">
+            <label for="fullname">Nombre completo</label>
+            <input type="text" name="fullname" class="form-control" id="fullname" value="{$usuario.fullname}">
           </div>
           <div class="form-group col-md-6">
             <label for="direccion">Dirección</label>
-            <input type="text" class="form-control" id="direccion" value="Calle Agustín Muñoz, 2, 4">
+            <input type="text" name="direccion" class="form-control" id="direccion" value="{$usuario.direccion}">
           </div>
         </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="ciudad">Ciudad</label>
-            <input type="text" class="form-control" id="ciudad" value="Torrent">
+            <input type="text" name="ciudad" class="form-control" id="ciudad" value="{$usuario.ciudad}">
           </div>
           <div class="form-group col-md-4">
             <label for="provincia">Provincia</label>
-            <input type="text" class="form-control" id="provincia" value="Valencia">
+            <input type="text" name="provincia" class="form-control" id="provincia" value="{$usuario.provincia}">
           </div>
           <div class="form-group col-md-2">
-            <label for="codigoPostal">CP</label>
-            <input type="text" class="form-control" id="codigoPostal" value="46900">
+            <label for="cp">CP</label>
+            <input type="text" name="cp" class="form-control" id="cp" value="{$usuario.cp}">
           </div>
         </div>
         <button type="submit" class="btn btn-tienda">Modificar</button>

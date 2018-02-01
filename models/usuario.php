@@ -27,9 +27,9 @@ class Usuario {
 
   public function buscarPorEmailPassword($email, $password) {
     $sql = "SELECT id, id_grupo, nick, email, password, fullname, direccion, ciudad, provincia, cp
-            FROM usuario
-            WHERE email = '$email'
-              AND password = '$password'";
+              FROM usuario
+             WHERE email = '$email'
+               AND password = '$password'";
     
     $result = $this->conn->query($sql);
 
@@ -41,6 +41,25 @@ class Usuario {
     }
 
     return $usuario;
+  }
+
+  public function cambiarDireccionUsuario($id, $fullname, $direccion, $ciudad, $provincia, $cp) {
+    $sql = "UPDATE usuario
+               SET fullname = '$fullname',
+                   direccion = '$direccion',
+                   ciudad = '$ciudad',
+                   provincia = '$provincia',
+                   cp = '$cp'
+             WHERE id = $id";
+
+    $resultado = false;
+
+    if ($this->conn->query($sql) === TRUE) {
+        $resultado = true;
+    }
+
+    return $resultado;
+
   }
 
   public function todos() {
