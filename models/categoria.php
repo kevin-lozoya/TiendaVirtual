@@ -19,11 +19,8 @@ class Categoria {
     $categoria = false;
 
     if ($result->num_rows > 0) {
-      $fila = $result->fetch_array();
-      $categoria = array(
-        'id' => $fila[0],
-        'nombre' => utf8_encode($fila[1])
-      );
+      $fila = $result->fetch_assoc();
+      $categoria = $fila;
     }
 
     return $categoria;
@@ -38,11 +35,8 @@ class Categoria {
     $categorias = array();
 
     if ($result->num_rows > 0) {
-      while ($fila = $result->fetch_array()) {
-        $categorias[] = array(
-          'id' => $fila[0],
-          'nombre' => utf8_encode($fila[1])
-        );  
+      while ($fila = $result->fetch_assoc()) {
+        $categorias[] = $fila;
       }
     }
 

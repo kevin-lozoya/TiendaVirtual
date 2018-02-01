@@ -9,7 +9,7 @@ class Producto {
   }
 
   public function buscarPorId($id) {
-    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
+    $sql = "SELECT id, nombre, precio, stock, imagen, id_categoria
             FROM producto
             WHERE id = $id";
     
@@ -18,22 +18,15 @@ class Producto {
     $producto = false;
 
     if ($result->num_rows > 0) {
-      $fila = $result->fetch_array();
-      $producto = array(
-        'id' => $fila[0],
-        'nombre' => utf8_encode($fila[1]),
-        'precio' => $fila[2],
-        'stock' => $fila[3],
-        'imagen' => $fila[4],
-        'idCategoria' => $fila[5]
-      );
+      $fila = $result->fetch_assoc();
+      $producto = $fila;
     }
 
     return $producto;
   }
 
   public function buscarPorCategoria($idCategoria) {
-    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
+    $sql = "SELECT id, nombre, precio, stock, imagen, id_categoria
             FROM producto
             WHERE categoria = $idCategoria";
     
@@ -42,15 +35,8 @@ class Producto {
     $productos = array();
 
     if ($result->num_rows > 0) {
-      while ($fila = $result->fetch_array()) {
-        $productos[] = array(
-          'id' => $fila[0],
-          'nombre' => utf8_encode($fila[1]),
-          'precio' => $fila[2],
-          'stock' => $fila[3],
-          'imagen' => $fila[4],
-          'idCategoria' => $fila[5]
-        );  
+      while ($fila = $result->fetch_assoc()) {
+        $productos[] = $fila;
       }
     }
 
@@ -58,7 +44,7 @@ class Producto {
   }
 
   public function todos() {
-    $sql = "SELECT id, nombre, precio, stock, imagen, categoria
+    $sql = "SELECT id, nombre, precio, stock, imagen, id_categoria
             FROM producto";
 
     $result = $this->conn->query($sql);
@@ -66,15 +52,8 @@ class Producto {
     $productos = array();
 
     if ($result->num_rows > 0) {
-      while ($fila = $result->fetch_array()) {
-        $productos[] = array(
-          'id' => $fila[0],
-          'nombre' => utf8_encode($fila[1]),
-          'precio' => $fila[2],
-          'stock' => $fila[3],
-          'imagen' => $fila[4],
-          'idCategoria' => $fila[5]
-        );  
+      while ($fila = $result->fetch_assoc()) {
+        $productos[] = $fila;
       }
     }
 
