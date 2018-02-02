@@ -22,32 +22,20 @@
             </tr>
           </thead>
           <tbody>
+          {foreach $pedidos as $pedido }
             <tr>
-              <th>1</th>
-              <td>01/06/2018</td>
-              <td>Pendiente</td>
+              <th>{$pedido.id}</th>
+              <td>{$pedido.fecha}</td>
+              <td>{$pedido.estado}</td>
               <td>
-                <a href="#">
+                {if $pedido.estado == 'Pendiente'}
+                <a href="cambiarestadopedidoenviado.php?id={$pedido.id}">
                   <i class="fa fa-check text-success" aria-hidden="true"></i>
                 </a>
+                {/if}
               </td>
             </tr>
-            <tr>
-              <th>2</th>
-              <td>12/06/2018</td>
-              <td>Enviado</td>
-              <td></td>
-            </tr>
-            <tr>
-              <th>3</th>
-              <td>23/06/2018</td>
-              <td>Pendiente</td>
-              <td>
-                <a href="#">
-                  <i class="fa fa-check text-success" aria-hidden="true"></i>
-                </a>
-              </td>
-            </tr>
+          {/foreach}
           </tbody>
         </table>
       </div>

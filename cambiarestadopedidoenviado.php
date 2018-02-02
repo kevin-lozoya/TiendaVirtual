@@ -1,5 +1,4 @@
 <?php
-include_once('lib/funciones.php');
 include_once('models/pedido.php');
 
 session_start();
@@ -15,8 +14,9 @@ if ($_SESSION['usuario']['id_grupo'] !== '1') {
   exit;
 }
 
-$plantilla = smarty();
+if (isset($_GET['id']) && !empty($_GET['id'])) {
+  $conPedido->cambiarEstadoEnviado($_GET['id']);
+}
 
-$plantilla->assign('pedidos', $conPedido->todos());
-$plantilla->display('adminpedidos.tpl');
+header('Location: adminpedidos.php');
 ?>
