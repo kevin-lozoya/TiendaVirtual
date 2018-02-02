@@ -13,51 +13,52 @@
       <button type="button" class="btn btn-outline-secondary mb-3" data-toggle="modal" data-target="#modalNuevoProducto">
         Añadir Producto
       </button>
+
       <!-- Modal para añadir producto -->
       <div class="modal fade" id="modalNuevoProducto" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title">Nuevo producto</h5>
-            </div>
-            <div class="modal-body">
-              <form>
+            <form action="insertarproducto.php" method="post">
+              <div class="modal-header">
+                <h5 class="modal-title">Nuevo producto</h5>
+              </div>
+              <div class="modal-body">
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
-                  <input type="text" class="form-control" id="nombre">
+                  <input type="text" name="nombre" class="form-control" id="nombre">
                 </div>
                 <div class="form-group">
                   <label for="categoria">Categoría</label>
-                  <select class="form-control" id="categoria">
-                    <option>Eligen categoría</option>
-                    <option>Placas Base</option>
-                    <option>Procesadores</option>
-                    <option>Targetas Gráficas</option>
+                  <select name="categoria" class="form-control" id="categoria">
+                  {foreach $categorias as $categoria}
+                    <option value="{$categoria.id}">{$categoria.nombre}</option>
+                  {/foreach}
                   </select>
                 </div>
                 <div class="form-row">
                   <div class="form-group col-6">
                     <label for="stock">Stock</label>
-                    <input type="number" min="0" class="form-control" id="stock">
+                    <input type="number" name="stock" min="0" class="form-control" id="stock">
                   </div>
                   <div class="form-group col-6">
                     <label for="precio">Precio</label>
-                    <input type="text" min="0" class="form-control" id="precio">
+                    <input type="text" name="precio" class="form-control" id="precio">
                   </div>
                 </div>
                 <div class="form-group">
-                  <label for="imagen">Imagen</label>
-                  <input type="file" class="form-control-file" id="imagen">
+                  <label for="imagen">URL Imagen</label>
+                  <input type="text" name="imagen" class="form-control" id="imagen">
                 </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-              <button type="button" class="btn btn-primary">Guardar</button>
-            </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                <button type="submit" class="btn btn-primary">Guardar</button>
+              </div>
+            </form>
           </div>
         </div>
       </div>
+      <!-- FIN modal añadir producto -->
 
       <div class="table-responsive">
         <table class="table table-hover">
@@ -70,36 +71,21 @@
             </tr>
           </thead>
           <tbody>
+          {foreach $productos as $producto}
             <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>10</td>
-              <td>200€</td>
+              <th scope="row">{$producto.nombre}</th>
+              <td>{$producto.stock}</td>
+              <td>{$producto.precio}€</td>
               <td>
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
+                <form action="borrarproducto.php" method="post">
+                  <input type="hidden" name="id" value="{$producto.id}">
+                  <button type="submit" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </form>                
               </td>
             </tr>
-            <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>10</td>
-              <td>200€</td>
-              <td>
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">Ordenador ASUS</th>
-              <td>10</td>
-              <td>200€</td>
-              <td>
-                <button type="button" class="close" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </td>
-            </tr>
+          {/foreach}
           </tbody>
         </table>
       </div>

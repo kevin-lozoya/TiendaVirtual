@@ -25,6 +25,31 @@ class Producto {
     return $producto;
   }
 
+  public function borrarProducto($id) {
+    $sql = "DELETE FROM producto
+            WHERE id = $id";
+    
+    $resultado = false;
+
+    if ($this->conn->query($sql) === true) {
+      $resultado = true;
+    }
+
+    return $resultado;
+  }
+
+  public function insertarProducto($nombre, $categoria, $stock, $precio, $imagen) {
+    $sql = "INSERT INTO `producto` (`id`, `nombre`, `precio`, `stock`, `imagen`, `id_categoria`) 
+              VALUES (NULL, '$nombre', '$precio', '$stock', '$imagen', '$categoria')";
+
+    $resultado = false;
+    if ($this->conn->query($sql) === true) {
+      $resultado = true;
+    }
+
+    return $resultado;
+  }
+
   public function buscarPorCategoria($idCategoria) {
     $sql = "SELECT id, nombre, precio, stock, imagen, id_categoria
             FROM producto
