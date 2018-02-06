@@ -25,6 +25,19 @@ class Usuario {
     return $usuario;
   }
 
+  public function insertarCliente($nick, $email, $password, $fullname = '', $direccion = '', $ciudad = '', $provincia = '', $cp = '') {
+    $sql = "INSERT INTO `usuario` (`id`, `id_grupo`, `nick`, `email`, `password`, `fullname`, `direccion`, `ciudad`, `provincia`, `cp`) 
+                VALUES (NULL, 2, '$nick', '$email', '$password', '$fullname', '$direccion', '$ciudad', '$provincia', '$cp')";
+
+    $resultado = false;
+    if ($this->conn->query($sql) === true) {
+      $resultado = true;
+    }
+
+    return $resultado;
+    
+  }
+
   public function buscarPorEmailPassword($email, $password) {
     $sql = "SELECT id, id_grupo, nick, email, password, fullname, direccion, ciudad, provincia, cp
               FROM usuario

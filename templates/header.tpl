@@ -63,6 +63,12 @@
                 Mi Cuenta
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/logout.php">
+                <i class="fa fa-user" aria-hidden="true"></i>
+                Salir
+              </a>
+            </li>
           </ul>
           <form action="/buscar.php" method="get" class="form-inline d-none d-lg-inline">
             <input name="b" class="form-control mr-sm-2" type="search" placeholder="Buscar producto" />
