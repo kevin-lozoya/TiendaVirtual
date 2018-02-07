@@ -53,7 +53,7 @@ class Producto {
   public function buscarPorCategoria($idCategoria) {
     $sql = "SELECT id, nombre, precio, stock, imagen, id_categoria
             FROM producto
-            WHERE categoria = $idCategoria";
+            WHERE id_categoria = $idCategoria";
     
     $result = $this->conn->query($sql);
 

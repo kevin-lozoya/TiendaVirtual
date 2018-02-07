@@ -27,20 +27,19 @@
           </form>
           <ul class="navbar-nav d-lg-none">
             <li class="nav-item">
-              <a class="nav-link" href="#">
+              <a class="nav-link" href="/">
                 Inicio
               </a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
-                aria-expanded="false">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Categorias
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <!-- Hacer que se busque en la base de datos -->
-                <a class="dropdown-item" href="/categoria.php">Placas Base</a>
-                <a class="dropdown-item" href="/categoria.php">Procesadores</a>
-                <a class="dropdown-item" href="/categoria.php">Targetas Gráficas</a>
+                <a class="dropdown-item" href="/categoria.php?id=1">Placas Base</a>
+                <a class="dropdown-item" href="/categoria.php?id=2">Procesadores</a>
+                <a class="dropdown-item" href="/categoria.php?id=3">Discos Duros</a>
+                <a class="dropdown-item" href="/categoria.php?id=4">Tarjetas Gráficas</a>
               </div>
             </li>
           </ul>
@@ -92,9 +91,10 @@
                 Categorias
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/categoria.php">Placas Base</a>
-                <a class="dropdown-item" href="/categoria.php">Procesadores</a>
-                <a class="dropdown-item" href="/categoria.php">Targetas Gráficas</a>
+                <a class="dropdown-item" href="/categoria.php?id=1">Placas Base</a>
+                <a class="dropdown-item" href="/categoria.php?id=2">Procesadores</a>
+                <a class="dropdown-item" href="/categoria.php?id=3">Discos Duros</a>
+                <a class="dropdown-item" href="/categoria.php?id=4">Tarjetas Gráficas</a>
               </div>
             </li>
           </ul>

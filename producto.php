@@ -7,14 +7,16 @@ $plantilla = smarty();
 if (isset($_GET['id']) && !empty($_GET['id'])) {
   $producto = $conProducto->buscarPorId($_GET['id']);
   if ($producto === false) {
-    $plantilla->display('errorproducto.tpl');
+    $plantilla->assign('mensaje', 'No existe el producto');
+    $plantilla->display('error.tpl');
     exit;
   }
   $plantilla->assign('producto', $producto);
 
 }
 else {
-  $plantilla->display('errorproducto.tpl');
+  $plantilla->assign('mensaje', 'No existe el producto');
+  $plantilla->display('error.tpl');
   exit;
 }
 $plantilla->display('producto.tpl');

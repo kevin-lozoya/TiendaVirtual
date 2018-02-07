@@ -10,14 +10,16 @@ $plantilla = smarty();
 if (isset($_GET['id']) && !empty($_GET['id'])) {
   $categoria = $conCategoria->buscarPorId($_GET['id']);
   if (!$categoria) {
-    $plantilla->display('errorcategoria.tpl');
+    $plantilla->assign('mensaje', 'No existe la categoría');
+    $plantilla->display('error.tpl');
     exit;
   }
   $plantilla->assign('categoria', $categoria);
   $plantilla->assign('productos', $conProducto->buscarPorCategoria($_GET['id'])); 
 }
 else {
-  $plantilla->display('errorcategoria.tpl');
+  $plantilla->assign('mensaje', 'No existe la categoría');
+  $plantilla->display('error.tpl');
   exit;
 }
 
