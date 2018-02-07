@@ -79,5 +79,11 @@ class Carrito {
 
     return $total;
   }
+
+  public function vaciar() {
+    if (isset($_SESSION['carrito'])) {
+      $_SESSION['carrito'] = array();
+    }
+  }
 }
 ?>
