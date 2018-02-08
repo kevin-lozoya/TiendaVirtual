@@ -22,9 +22,6 @@
         </button>
 
         <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
-          <form class="py-3 px-3 d-lg-none busqueda-movil">
-            <input class="form-control" type="search" placeholder="Buscar producto" aria-label="Search">
-          </form>
           <ul class="navbar-nav d-lg-none">
             <li class="nav-item">
               <a class="nav-link" href="/">
@@ -47,15 +44,17 @@
             <li class="nav-item">
               <a class="nav-link" href="/carrito.php">
                 <i class="fa fa-shopping-cart" aria-hidden="true"></i>
-                0 Producto(s) | 0€
+                {$cantidadCarrito} Producto(s) | {$precioCarrito}€
               </a>
             </li>
+            {if !$usuario}
             <li class="nav-item">
               <a class="nav-link" href="/acceder.php">
                 <i class="fa fa-user" aria-hidden="true"></i>
                 Acceder
               </a>
             </li>
+            {else}
             <li class="nav-item">
               <a class="nav-link" href="/usuario.php">
                 <i class="fa fa-user" aria-hidden="true"></i>
@@ -68,12 +67,8 @@
                 Salir
               </a>
             </li>
+            {/if}
           </ul>
-          <form action="/buscar.php" method="get" class="form-inline d-none d-lg-inline">
-            <input name="b" class="form-control mr-sm-2" type="search" placeholder="Buscar producto" />
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
-          </form>
-
         </div>
       </div>
     </nav>

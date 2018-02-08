@@ -6,7 +6,7 @@ class Carrito {
     $this->producto = $connProducto;
   }
 
-  public function cantidadProducto() {
+  public function cantidad() {
     $cantidad = 0;
     if (isset($_SESSION['carrito'])) {
       $cantidad = count($_SESSION['carrito']);

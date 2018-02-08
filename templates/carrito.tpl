@@ -47,7 +47,7 @@
               <strong>Total</strong>
             </td>
             <td colspan="1" class="text-right">
-              <strong>{$precioTotal}€</strong>
+              <strong>{$precioCarrito}€</strong>
             </td>
           </tr>
         </tbody>

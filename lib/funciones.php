@@ -36,5 +36,14 @@ function postParamsExists($keysPost) {
   return $params;
 }
 
+function loginCookie() {
+  if (isset($_COOKIE["usuario"])) {
+      include_once('models/usuario.php');
+      $usuario = $conUsuario->buscarPorId($_COOKIE["usuario"]);
+    if ($usuario !== false) {
+      $_SESSION['usuario'] = $usuario;
+    }
+  }
+}
 
 ?>

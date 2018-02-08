@@ -8,11 +8,11 @@ session_start();
 $carrito = new Carrito($conProducto);
 
 if (!isset($_SESSION['usuario'])) {
-  header('Location: index.php');
+  header('Location: acceder.php');
   exit;
 }
 
-if ($carrito->cantidadProducto() == 0) {
+if ($carrito->cantidad() == 0) {
   header('Location: carrito.php');
   exit;
 }
