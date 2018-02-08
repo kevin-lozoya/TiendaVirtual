@@ -1,16 +1,15 @@
 <?php
 include_once('lib/funciones.php');
-include_once('models/categoria.php');
-include_once('models/producto.php');
+include_once('models/db.php');
 include_once('modules/carrito.php');
 
-$carrito = new Carrito($conProducto);
+$carrito = new Carrito($db->Producto);
 
 session_start();
 
 if (isset($_COOKIE["usuario"])) {
-    include_once('models/usuario.php');
-    $usuario = $conUsuario->buscarPorId($_COOKIE["usuario"]);
+    include_once('models/db.php');
+    $usuario = $db->Usuario->buscarPorId($_COOKIE["usuario"]);
   if ($usuario !== false) {
     $_SESSION['usuario'] = $usuario;
   }
@@ -31,9 +30,9 @@ $plantilla = smarty();
 
 $plantilla->assign('cantidadCarrito', $carrito->cantidad());
 $plantilla->assign('precioCarrito', $carrito->precioTotal());
-$plantilla->assign('categorias', $conCategoria->todos());
+$plantilla->assign('categorias', $db->Categoria->todos());
 $plantilla->assign('usuario', $_SESSION['usuario']);
-$plantilla->assign('productos', $conProducto->todos());
+$plantilla->assign('productos', $db->Producto->todos());
 
 $plantilla->display('adminproductos.tpl');
 ?>

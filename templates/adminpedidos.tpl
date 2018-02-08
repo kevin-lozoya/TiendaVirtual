@@ -28,6 +28,9 @@
               <td>{$pedido.fecha}</td>
               <td>{$pedido.estado}</td>
               <td>
+                <button type="button" class="close float-none mr-2" data-toggle="modal" data-target="#pedido{$pedido.id}">
+                  <i class="fa fa-eye" aria-hidden="true"></i>
+                </button>
                 {if $pedido.estado == 'Pendiente'}
                 <a href="cambiarestadopedidoenviado.php?id={$pedido.id}">
                   <i class="fa fa-check text-success" aria-hidden="true"></i>
@@ -35,6 +38,21 @@
                 {/if}
               </td>
             </tr>
+            <div class="modal fade" id="pedido{$pedido.id}" tabindex="-1" role="dialog">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title">Pedido {$pedido.id}</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                    ...
+                  </div>
+                </div>
+              </div>
+            </div>
           {/foreach}
           </tbody>
         </table>
