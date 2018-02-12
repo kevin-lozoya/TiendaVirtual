@@ -1,16 +1,13 @@
 <?php
 include_once('lib/funciones.php');
-include_once('models/pedido.php');
-include_once('models/producto.php');
+include_once('models/db.php');
 include_once('modules/carrito.php');
-
-$carrito = new Carrito($conProducto);
 
 session_start();
 
 if (isset($_COOKIE["usuario"])) {
-    include_once('models/usuario.php');
-    $usuario = $conUsuario->buscarPorId($_COOKIE["usuario"]);
+    include_once('models/db.php');
+    $usuario = $db->Usuario->buscarPorId($_COOKIE["usuario"]);
   if ($usuario !== false) {
     $_SESSION['usuario'] = $usuario;
   }
@@ -27,11 +24,16 @@ if ($_SESSION['usuario']['id_grupo'] !== '1') {
   exit;
 }
 
+$pedidos = $db->Pedido->todos();
+foreach ($pedidos as $key => $pedido) {
+  $pedidos[$key]['productos'] = $db->Compra->buscarPorPedido($pedido['id']);
+}
+
 $plantilla = smarty();
 
 $plantilla->assign('cantidadCarrito', $carrito->cantidad());
 $plantilla->assign('precioCarrito', $carrito->precioTotal());
 $plantilla->assign('usuario', $_SESSION['usuario']);
-$plantilla->assign('pedidos', $conPedido->todos());
+$plantilla->assign('pedidos', $pedidos);
 $plantilla->display('adminpedidos.tpl');
 ?>

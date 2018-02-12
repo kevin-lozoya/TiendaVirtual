@@ -4,6 +4,7 @@ include_once('pedido.php');
 include_once('categoria.php');
 include_once('producto.php');
 include_once('usuario.php');
+include_once('compra.php');
 
 class DB {
   private $conn;
@@ -11,6 +12,7 @@ class DB {
   public $Pedido;
   public $Producto;
   public $Usuario;
+  public $Compra;
 
   public function __construct($conexion) {
     $this->conn = $conexion;
@@ -18,6 +20,7 @@ class DB {
     $this->Pedido = new Pedido($conexion);
     $this->Producto = new Producto($conexion);
     $this->Usuario = new Usuario($conexion);
+    $this->Compra = new Compra($conexion);
   }
 }
 

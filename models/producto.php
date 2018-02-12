@@ -84,6 +84,20 @@ class Producto {
 
     return $productos;
   }
+
+  public function restarStock($id, $cantidad) {
+    $sql = "UPDATE producto
+               SET stock = (stock - $cantidad)
+             WHERE id = $id";
+
+    $resultado = false;
+
+    if ($this->conn->query($sql) === TRUE) {
+        $resultado = true;
+    }
+
+    return $resultado;
+  }
 }
 
 $conProducto = new Producto($conn);

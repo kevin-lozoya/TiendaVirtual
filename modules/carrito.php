@@ -1,4 +1,6 @@
 <?php
+require_once($_SERVER['DOCUMENT_ROOT'].'/models/db.php');
+
 class Carrito {
   private $producto;
 
@@ -86,4 +88,6 @@ class Carrito {
     }
   }
 }
+
+$carrito = new Carrito($db->Producto);
 ?>
