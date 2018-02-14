@@ -1,14 +1,13 @@
 <?php
-include_once('models/usuario.php');
+include_once('models/db.php');
 
 session_start();
 
 if (isset($_POST['email']) && isset($_POST['password'])) {
   if (!empty($_POST['email']) && !empty($_POST['password'])) {
-    $usuario = $conUsuario->buscarPorEmailPassword($_POST['email'], $_POST['password']);
+    $usuario = $db->Usuario->buscarPorEmailPassword($_POST['email'], $_POST['password']);
     if ($usuario === false) {
       header('Location: acceder.php');
-      exit;
     }
 
     $_SESSION['usuario'] = $usuario;
@@ -25,7 +24,6 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
     
     header('Location: index.php');
-    exit;
   }
 }
 

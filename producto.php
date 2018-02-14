@@ -1,15 +1,12 @@
 <?php
 include_once('lib/funciones.php');
-include_once('models/producto.php');
+include_once('models/db.php');
 include_once('modules/carrito.php');
-
-$carrito = new Carrito($conProducto);
 
 session_start();
 
 if (isset($_COOKIE["usuario"])) {
-    include_once('models/usuario.php');
-    $usuario = $conUsuario->buscarPorId($_COOKIE["usuario"]);
+    $usuario = $db->Usuario->buscarPorId($_COOKIE["usuario"]);
   if ($usuario !== false) {
     $_SESSION['usuario'] = $usuario;
   }
@@ -18,7 +15,7 @@ if (isset($_COOKIE["usuario"])) {
 $plantilla = smarty();
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
-  $producto = $conProducto->buscarPorId($_GET['id']);
+  $producto = $db->Producto->buscarPorId($_GET['id']);
   if ($producto === false) {
     $plantilla->assign('mensaje', 'No existe el producto');
     $plantilla->display('error.tpl');
