@@ -18,7 +18,7 @@
       <div class="modal fade" id="modalNuevoProducto" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="insertarproducto.php" method="post">
+            <form action="/db/producto/producto.php" method="post">
               <div class="modal-header">
                 <h5 class="modal-title">Nuevo producto</h5>
               </div>
@@ -77,7 +77,7 @@
               <td>{$producto.stock}</td>
               <td>{$producto.precio}€</td>
               <td>
-                <form action="borrarproducto.php" method="post">
+                <form action="/db/producto/borrarproducto.php" method="post">
                   <input type="hidden" name="id" value="{$producto.id}">
                   <button type="submit" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

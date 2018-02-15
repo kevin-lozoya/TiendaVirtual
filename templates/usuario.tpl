@@ -23,7 +23,7 @@
       </div>
       <hr>
       <h3>Datos de envío</h3>
-      <form action="cambiardireccionusuario.php" method="post">
+      <form action="/db/usuario/cambiardireccion.php" method="post">
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="fullname">Nombre completo</label>

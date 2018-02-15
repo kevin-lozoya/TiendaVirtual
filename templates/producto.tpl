@@ -9,7 +9,7 @@
       <img class="img-fluid" src="{$producto.imagen}" alt="imagen producto" />
     </div>
     <div class="col-lg-6">
-      <form action="anyadirproductocarrito.php" method="post">
+      <form action="/carrito/anyadirproducto.php" method="post">
         <div class="form-group row">
           <label class="col-sm-3">Precio:</label>
           <div class="col-sm-9">

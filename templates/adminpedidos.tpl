@@ -34,7 +34,7 @@
                   <i class="fa fa-eye" aria-hidden="true"></i>
                 </button>
                 {if $pedido.estado == 'Pendiente'}
-                <a href="cambiarestadopedidoenviado.php?id={$pedido.id}">
+                <a href="/db/pedido/cambiarestadoenviado.php?id={$pedido.id}">
                   <i class="fa fa-check text-success" aria-hidden="true"></i>
                 </a>
                 {/if}

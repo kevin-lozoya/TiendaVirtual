@@ -1,15 +1,15 @@
 <?php
-include_once('models/db.php');
-include_once('modules/carrito.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/models/db.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/modules/carrito.php');
 
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-  header('Location: acceder.php');
+  header('Location: /acceder.php');
 }
 
 if ($carrito->cantidad() == 0) {
-  header('Location: carrito.php');
+  header('Location: /carrito.php');
 }
 
 $hacerPedido = true;
@@ -31,5 +31,5 @@ if ($hacerPedido && $pedido = $db->Pedido->insertarPedido($_SESSION['usuario']['
   $carrito->vaciar();
 }
 
-header('Location: carrito.php');
+header('Location: /carrito.php');
 ?>

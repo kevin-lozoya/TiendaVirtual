@@ -1,5 +1,5 @@
 <?php
-include_once('modules/carrito.php');
+require_once($_SERVER['DOCUMENT_ROOT'].'/modules/carrito.php');
 
 session_start();
 
@@ -14,5 +14,5 @@ if (isset($_POST['id']) && isset($_POST['cantidad'])) {
   }
 }
 
-header('Location: carrito.php');
+header('Location: /carrito.php');
 ?>

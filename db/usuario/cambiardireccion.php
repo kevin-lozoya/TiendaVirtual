@@ -1,10 +1,10 @@
 <?php
-include_once('models/db.php');
+include_once($_SERVER['DOCUMENT_ROOT'].'/models/db.php');
 
 session_start();
 
 if (!isset($_SESSION['usuario'])) {
-  header('Location: index.php');
+  header('Location: /index.php');
 }
 
 if (isset($_POST['fullname']) && isset($_POST['direccion']) && isset($_POST['ciudad']) && isset($_POST['provincia']) && isset($_POST['cp'])) {
@@ -16,6 +16,6 @@ if (isset($_POST['fullname']) && isset($_POST['direccion']) && isset($_POST['ciu
   }
 }
 
-header('Location: usuario.php');
+header('Location: /usuario.php');
 
 ?>

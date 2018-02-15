@@ -25,7 +25,7 @@
               <td>{$producto.cantidad}</td>
               <td>{$producto.precio * $producto.cantidad}€</td>
               <td>
-                <form action="borrarproductocarrito.php" method="post">
+                <form action="/carrito/borrarproducto.php" method="post">
                   <input type="hidden" name="id" value="{$producto.id}">
                   <button type="submit" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -52,7 +52,7 @@
           </tr>
         </tbody>
       </table>
-      <a href="/checkout.php" class="btn btn-tienda btn-block">
+      <a href="/carrito/checkout.php" class="btn btn-tienda btn-block">
         Proceder al Checkout
       </a>
     </div>
