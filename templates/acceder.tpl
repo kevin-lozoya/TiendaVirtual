@@ -11,15 +11,15 @@
           <form action="login.php" method="post">
             <div class="form-group">
               <label for="email">Correo electrónico</label>
-              <input type="email" name="email" class="form-control" id="email" placeholder="Correo electrónico">
+              <input type="email" name="email" class="form-control" id="email" placeholder="Correo electrónico" required>
             </div>
             <div class="form-group">
               <label for="password">Contraseña</label>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña">
+              <input type="password" name="password" class="form-control" id="password" placeholder="Contraseña" required>
             </div>
-            <div class="form-check">
+            <div class="form-check mb-2">
               <input type="checkbox" name="recuerdame" class="form-check-input" id="recuerdame">
-              <label class="form-check-label" for="recuerdame">Recuérdame</label>
+              <label class="form-check-label" for="recuerdame">Recuérdame por 30 días</label>
             </div>
             <button type="submit" class="btn btn-tienda">Acceder</button>
           </form>

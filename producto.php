@@ -5,7 +5,7 @@ include_once('modules/carrito.php');
 
 session_start();
 
-if (isset($_COOKIE["usuario"])) {
+if (isset($_COOKIE["usuario"]) && !isset($_SESSION['usuario'])) {
     $usuario = $db->Usuario->buscarPorId($_COOKIE["usuario"]);
   if ($usuario !== false) {
     $_SESSION['usuario'] = $usuario;
@@ -13,6 +13,10 @@ if (isset($_COOKIE["usuario"])) {
 }
 
 $plantilla = smarty();
+
+$plantilla->assign('cantidadCarrito', $carrito->cantidad());
+$plantilla->assign('precioCarrito', $carrito->precioTotal());
+$plantilla->assign('usuario', isset($_SESSION['usuario']));
 
 if (isset($_GET['id']) && !empty($_GET['id'])) {
   $producto = $db->Producto->buscarPorId($_GET['id']);
@@ -30,8 +34,5 @@ else {
   exit;
 }
 
-$plantilla->assign('cantidadCarrito', $carrito->cantidad());
-$plantilla->assign('precioCarrito', $carrito->precioTotal());
-$plantilla->assign('usuario', isset($_SESSION['usuario']));
 $plantilla->display('producto.tpl');
 ?>

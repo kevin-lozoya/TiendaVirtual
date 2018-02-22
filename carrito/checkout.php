@@ -6,10 +6,12 @@ session_start();
 
 if (!isset($_SESSION['usuario'])) {
   header('Location: /acceder.php');
+  exit;
 }
 
 if ($carrito->cantidad() == 0) {
   header('Location: /carrito.php');
+  exit;
 }
 
 $hacerPedido = true;

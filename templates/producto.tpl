@@ -21,7 +21,7 @@
           <div class="form-group row">
             <label class="col-sm-3">Cantidad:</label>
             <div class="col-sm-9">
-              <input class="form-control" type="number" name="cantidad" id="cantidad" value="1" min="1">
+              <input class="form-control" type="number" name="cantidad" id="cantidad" value="1" min="1" max="{$producto.stock}">
             </div>
           </div>
           <div class="form-group row">

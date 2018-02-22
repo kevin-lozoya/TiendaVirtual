@@ -8,6 +8,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     $usuario = $db->Usuario->buscarPorEmailPassword($_POST['email'], $_POST['password']);
     if ($usuario === false) {
       header('Location: acceder.php');
+      exit;
     }
 
     $_SESSION['usuario'] = $usuario;
@@ -24,6 +25,7 @@ if (isset($_POST['email']) && isset($_POST['password'])) {
     }
     
     header('Location: index.php');
+    exit;
   }
 }
 

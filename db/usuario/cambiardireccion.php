@@ -5,6 +5,7 @@ session_start();
 
 if (!isset($_SESSION['usuario'])) {
   header('Location: /index.php');
+  exit;
 }
 
 if (isset($_POST['fullname']) && isset($_POST['direccion']) && isset($_POST['ciudad']) && isset($_POST['provincia']) && isset($_POST['cp'])) {

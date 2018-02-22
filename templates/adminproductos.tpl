@@ -18,18 +18,18 @@
       <div class="modal fade" id="modalNuevoProducto" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
-            <form action="/db/producto/producto.php" method="post">
+            <form action="/db/producto/insertar.php" method="post">
               <div class="modal-header">
                 <h5 class="modal-title">Nuevo producto</h5>
               </div>
               <div class="modal-body">
                 <div class="form-group">
                   <label for="nombre">Nombre</label>
-                  <input type="text" name="nombre" class="form-control" id="nombre">
+                  <input type="text" name="nombre" class="form-control" id="nombre" required>
                 </div>
                 <div class="form-group">
                   <label for="categoria">Categoría</label>
-                  <select name="categoria" class="form-control" id="categoria">
+                  <select name="categoria" class="form-control" id="categoria" required>
                   {foreach $categorias as $categoria}
                     <option value="{$categoria.id}">{$categoria.nombre}</option>
                   {/foreach}
@@ -38,16 +38,16 @@
                 <div class="form-row">
                   <div class="form-group col-6">
                     <label for="stock">Stock</label>
-                    <input type="number" name="stock" min="0" class="form-control" id="stock">
+                    <input type="number" name="stock" min="0" class="form-control" id="stock" required>
                   </div>
                   <div class="form-group col-6">
                     <label for="precio">Precio</label>
-                    <input type="text" name="precio" class="form-control" id="precio">
+                    <input type="text" name="precio" class="form-control" id="precio" required>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="imagen">URL Imagen</label>
-                  <input type="text" name="imagen" class="form-control" id="imagen">
+                  <input type="text" name="imagen" class="form-control" id="imagen" required>
                 </div>
               </div>
               <div class="modal-footer">
@@ -77,7 +77,7 @@
               <td>{$producto.stock}</td>
               <td>{$producto.precio}€</td>
               <td>
-                <form action="/db/producto/borrarproducto.php" method="post">
+                <form action="/db/producto/borrar.php" method="post">
                   <input type="hidden" name="id" value="{$producto.id}">
                   <button type="submit" class="close" aria-label="Close">
                     <span aria-hidden="true">&times;</span>

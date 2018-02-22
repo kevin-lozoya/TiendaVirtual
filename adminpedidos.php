@@ -5,7 +5,7 @@ include_once('modules/carrito.php');
 
 session_start();
 
-if (isset($_COOKIE["usuario"])) {
+if (isset($_COOKIE["usuario"]) && !isset($_SESSION['usuario'])) {
     $usuario = $db->Usuario->buscarPorId($_COOKIE["usuario"]);
   if ($usuario !== false) {
     $_SESSION['usuario'] = $usuario;
@@ -14,11 +14,13 @@ if (isset($_COOKIE["usuario"])) {
 
 if (!isset($_SESSION['usuario'])) {
   header('Location: index.php');
+  exit;
 }
 
 // Si el usuario no pertenece al grupo 'administrador'
 if ($_SESSION['usuario']['id_grupo'] !== '1') {
   header('Location: usuario.php');
+  exit;
 }
 
 $pedidos = $db->Pedido->todos();
